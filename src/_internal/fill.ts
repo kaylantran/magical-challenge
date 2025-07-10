@@ -1,8 +1,12 @@
 import { Page } from "playwright";
 
-export async function fillPersonal(page: Page) {
-  await page.fill("input[name=firstName]", "John");
-  await page.fill("input[name=lastName]", "Doe");
+export async function fillPersonal(
+  page: Page,
+  firstName: string,
+  lastName: string
+) {
+  await page.fill("input[name=firstName]", firstName);
+  await page.fill("input[name=lastName]", lastName);
   await page.fill("input[name=dateOfBirth]", "1990-01-01");
   await page.fill("input[name=medicalId]", "91927885");
 }
@@ -27,8 +31,12 @@ export async function fillEmergency(page: Page) {
     .fill("(415)123-4567");
 }
 
-export async function fillForm(page: Page) {
-  await fillPersonal(page);
+export async function fillForm(
+  page: Page,
+  firstName: string,
+  lastName: string
+) {
+  await fillPersonal(page, firstName, lastName);
   await fillMedical(page);
   await fillEmergency(page);
 }

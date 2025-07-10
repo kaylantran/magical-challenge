@@ -72,10 +72,27 @@ Create a `.env` file and add your Gemini API key
 GOOGLE_GENERATIVE_AI_API_KEY=your_google_key
 ```
 
-### Running the script
+## Solution
 
+This project implemnts an AI agent using Playwright and the Vercel AI SDK (Gemini 2.5) to automate a healthcare form submission.
+
+### Features Implemented
+- Fills out all three form sections (Personal, Medical, and Emergency)
+- Accepts dynamic input via API and/or CLI
+- Generates realistic synthetic data using LLM if input is missing
+- Supports scheduled automation every 5 minutes 
+
+### Running the script(s)
+
+#### Run one-off fill
 ```bash
 npm run dev
 ```
-
-
+#### Run API server
+```bash
+npm run api
+```
+##### Run scheduler
+```bash
+npm run api
+```

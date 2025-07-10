@@ -1,5 +1,5 @@
 import express from "express";
-import { runMedicalWorkflow } from "../_internal/runMedicalFormWorkflow";
+import { runMedicalWorkflow } from "../_internal/workflow";
 
 const router = express.Router();
 

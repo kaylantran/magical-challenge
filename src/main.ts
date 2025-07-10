@@ -1,4 +1,4 @@
-import { runMedicalWorkflow } from "./_internal/runMedicalFormWorkflow";
+import { runMedicalWorkflow } from "./_internal/workflow";
 
 export async function main() {
   await runMedicalWorkflow("John", "Doe");

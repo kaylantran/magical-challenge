@@ -27,3 +27,8 @@ export async function fillEmergency(page: Page) {
     .fill("(415)123-4567");
 }
 
+export async function fillForm(page: Page) {
+  await fillPersonal(page);
+  await fillMedical(page);
+  await fillEmergency(page);
+}

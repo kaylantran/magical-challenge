@@ -14,3 +14,16 @@ export async function fillMedical(page: Page) {
   await page.fill('textarea[name="allergies"]', "None");
   await page.fill('textarea[name="medications"]', "Ibuprofen");
 }
+
+export async function fillEmergency(page: Page) {
+  await page.getByRole("button", { name: "Emergency Contact" }).click();
+  await page.getByRole("textbox", { name: "Emergency Contact Name" }).click();
+  await page
+    .getByRole("textbox", { name: "Emergency Contact Name" })
+    .fill("Jane Doe");
+  await page.getByRole("textbox", { name: "Emergency Contact Phone" }).click();
+  await page
+    .getByRole("textbox", { name: "Emergency Contact Phone" })
+    .fill("(415)123-4567");
+}
+

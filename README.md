@@ -96,3 +96,9 @@ npm run api
 ```bash
 npm run api
 ```
+
+## Repository
+
+The full project, including commit history and version control, is available on GitHub:
+
+[GitHub Repository](https://github.com/kaylantran/magical-challenge.git)

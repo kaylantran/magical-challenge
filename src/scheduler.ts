@@ -1,3 +1,4 @@
+import "dotenv-defaults/config";
 import cron from "node-cron";
 import { runMedicalWorkflow } from "./_internal/workflow";
 
@@ -5,7 +6,7 @@ cron.schedule("*/5 * * * *", async () => {
   console.log("Running scheduled medical form workflow...");
 
   try {
-    await runMedicalWorkflow("John", "Doe");
+    await runMedicalWorkflow();
     console.log("Medical form workflow completed.");
   } catch (err) {
     console.error("Error running scheduled workflow:", err);

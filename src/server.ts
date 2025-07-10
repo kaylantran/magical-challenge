@@ -1,3 +1,4 @@
+import "dotenv-defaults/config";
 import express from "express";
 import medicalFormRouter from "./routes/medicalForm";
 

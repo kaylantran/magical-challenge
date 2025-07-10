@@ -5,8 +5,7 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   try {
-    const { firstName, lastName } = req.body;
-    await runMedicalWorkflow(firstName, lastName);
+    await runMedicalWorkflow();
     res.status(200).send("Medical form workflow executed successfully!");
   } catch (err) {
     console.error("Error running workflow:", err);

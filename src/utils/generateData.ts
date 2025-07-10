@@ -1,20 +1,10 @@
 import { generateText } from "ai";
 import { model } from "../_internal/setup";
 import { formGenerationPrompt } from "../prompts/formPrompt";
+import { FormData } from "../types/formData";
 import { cleanJSON } from "./cleanRes";
 
-export async function generateData(): Promise<{
-  firstName: string;
-  lastName: string;
-  dateOfBirth: string;
-  medicalId: string;
-  gender: string;
-  bloodType: string;
-  allergies: string;
-  medications: string;
-  emergencyContactName: string;
-  emergencyContactPhone: string;
-}> {
+export async function generateData(): Promise<FormData> {
   const response = await generateText({ model, prompt: formGenerationPrompt });
   const clean = cleanJSON(response.text.trim());
   try {

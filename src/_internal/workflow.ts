@@ -1,3 +1,4 @@
+// Orchestrates full medical form automation
 import { createSession } from "../session";
 import { FormData } from "../types/formData";
 import { generateData } from "../utils/generateData";

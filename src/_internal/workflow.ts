@@ -6,7 +6,9 @@ export async function runMedicalWorkflow(
   firstName: string,
   lastName: string
 ): Promise<void> {
-  const page = await createSession("https://magical-medical-form.netlify.app/");
+  const url =
+    process.env.FORM_URL || "https://magical-medical-form.netlify.app/";
+  const page = await createSession(url);
   await fillForm(page, firstName, lastName);
   await submitForm(page);
 }

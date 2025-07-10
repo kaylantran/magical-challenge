@@ -1,42 +1,37 @@
 import { Page } from "playwright";
+import { FormData } from "../types/formData";
 
-export async function fillPersonal(
-  page: Page,
-  firstName: string,
-  lastName: string
-) {
-  await page.fill("input[name=firstName]", firstName);
-  await page.fill("input[name=lastName]", lastName);
-  await page.fill("input[name=dateOfBirth]", "1990-01-01");
-  await page.fill("input[name=medicalId]", "91927885");
+export async function fillPersonal(page: Page, data: FormData) {
+  await page.fill("input[name=firstName]", data.firstName);
+  await page.fill("input[name=lastName]", data.lastName);
+  await page.fill("input[name=dateOfBirth]", data.dateOfBirth);
+  await page.fill("input[name=medicalId]", data.medicalId);
 }
 
-export async function fillMedical(page: Page) {
+export async function fillMedical(page: Page, data: FormData) {
   await page.getByRole("button", { name: "Medical Information" }).click();
-  await page.selectOption('select[name="gender"]', { label: "Male" });
-  await page.selectOption('select[name="bloodType"]', { label: "O+" });
-  await page.fill('textarea[name="allergies"]', "None");
-  await page.fill('textarea[name="medications"]', "Ibuprofen");
+  await page.selectOption('select[name="gender"]', { label: data.gender });
+  await page.selectOption('select[name="bloodType"]', {
+    label: data.bloodType,
+  });
+  await page.fill('textarea[name="allergies"]', data.allergies);
+  await page.fill('textarea[name="medications"]', data.medications);
 }
 
-export async function fillEmergency(page: Page) {
+export async function fillEmergency(page: Page, data: FormData) {
   await page.getByRole("button", { name: "Emergency Contact" }).click();
   await page.getByRole("textbox", { name: "Emergency Contact Name" }).click();
   await page
     .getByRole("textbox", { name: "Emergency Contact Name" })
-    .fill("Jane Doe");
+    .fill(data.emergencyContactName);
   await page.getByRole("textbox", { name: "Emergency Contact Phone" }).click();
   await page
     .getByRole("textbox", { name: "Emergency Contact Phone" })
-    .fill("(415)123-4567");
+    .fill(data.emergencyContactPhone);
 }
 
-export async function fillForm(
-  page: Page,
-  firstName: string,
-  lastName: string
-) {
-  await fillPersonal(page, firstName, lastName);
-  await fillMedical(page);
-  await fillEmergency(page);
+export async function fillForm(page: Page, data: FormData) {
+  await fillPersonal(page, data);
+  await fillMedical(page, data);
+  await fillEmergency(page, data);
 }
